@@ -1,6 +1,6 @@
 import { SecurityModule } from './security.module';
 
-describe('SecurityModule', () => {
+describe('Module: SecurityModule', () => {
   //let securityModule: SecurityModule;
 
   beforeEach(() => {

@@ -21,9 +21,6 @@ export class AuthService {
 
   /**
    * Attempts to get a new token from the current token
-   *
-   * @returns {Observable<any>}
-   * @memberof AuthService
    */
   public refreshToken(oldToken: AuthToken): Observable<AuthToken> {
 

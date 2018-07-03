@@ -1,7 +1,7 @@
 import { AuthService } from 'lib/services/auth.service';
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse } from '@angular/common/http';
-import { Observable, of as observableOf, throwError as _throw } from 'rxjs';
+import { Observable, of as observableOf, throwError as _throw, throwError } from 'rxjs';
 import { tap, mergeMap, catchError, first } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { RootState } from 'lib/store/store.index';
@@ -21,7 +21,7 @@ export class AuthInterceptor implements HttpInterceptor {
       // add auth headers to the request
       mergeMap(req => this.auth.authenticateRequest(req)),
       // save the original request in case we have to re-auth
-      tap(req => this.resourceRequest = request),
+      tap(() => this.resourceRequest = request),
       // handle the request
       mergeMap(req => next.handle(req)),
       // catch error
@@ -30,7 +30,7 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
 
-  private handleRequestFailure(error: Error, next: HttpHandler) {
+  private handleRequestFailure(error: Error, next: HttpHandler): Observable<HttpEvent<any>> {
 
     if (error instanceof HttpErrorResponse) {
 
@@ -48,14 +48,14 @@ export class AuthInterceptor implements HttpInterceptor {
           first(),
           mergeMap(newToken => this.auth.authenticateRequest(this.resourceRequest)),
           mergeMap(req => next.handle(req)),
-          catchError(err => _throw(`token refresh failed, canceling request for ${error.url}`))
+          catchError(err => throwError(`token refresh failed, canceling request for ${error.url}`))
         );
 
       }
     }
 
     // non-http error
-    return _throw(error);
+    return throwError(error);
 
   }
 
