@@ -1,5 +1,5 @@
 import { Actions, SecurityActions } from './security.actions';
-import { AuthToken } from 'lib/models/auth-token.model';
+import { AuthToken } from '../models/auth-token.model';
 
 export interface SecurityState {
   authToken?: AuthToken;

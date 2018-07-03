@@ -1,10 +1,10 @@
 import { createSelector, createFeatureSelector, MemoizedSelector } from '@ngrx/store';
 import * as jwtDecode_ from 'jwt-decode';
 import * as moment_ from 'moment';
-import { SecurityState } from 'lib/store/security.reducer';
-import { PlexureToken } from 'lib/models/plexure-token.model';
-import { AuthHostConfig } from 'lib/models/auth-host-config.model';
-import { AuthToken } from 'lib/models/auth-token.model';
+import { SecurityState } from '../store/security.reducer';
+import { PlexureToken } from '../models/plexure-token.model';
+import { AuthHostConfig } from '../models/auth-host-config.model';
+import { AuthToken } from '../models/auth-token.model';
 
 // hack to get namespace imports to work with rollup
 const jwtDecode = jwtDecode_;

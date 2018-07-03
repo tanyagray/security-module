@@ -4,9 +4,9 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 import { map, first } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import * as Security from 'lib/store/security.selectors';
-import { SecurityConfig } from 'lib/security.config';
-import { RootState } from 'lib/store/store.index';
+import * as Security from '../store/security.selectors';
+import { SecurityConfig } from '../security.config';
+import { RootState } from '../store/store.index';
 
 @Injectable()
 export class AuthService {

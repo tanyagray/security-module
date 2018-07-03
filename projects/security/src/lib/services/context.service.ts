@@ -1,6 +1,6 @@
 import { Store } from '@ngrx/store';
-import { RootState } from 'lib/store/store.index';
-import * as Security from 'lib/store/security.selectors';
+import { RootState } from '../store/store.index';
+import * as Security from '../store/security.selectors';
 import { Injectable } from '@angular/core';
 
 @Injectable()

@@ -1,12 +1,12 @@
-import { AuthService } from 'lib/services/auth.service';
+import { AuthService } from '../services/auth.service';
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of as observableOf, throwError as _throw, throwError } from 'rxjs';
 import { tap, mergeMap, catchError, first } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
-import { RootState } from 'lib/store/store.index';
-import { RefreshAuthToken } from 'lib/store/security.actions';
-import { getAuthToken } from 'lib/store/security.selectors';
+import { RootState } from '../store/store.index';
+import { RefreshAuthToken } from '../store/security.actions';
+import { getAuthToken } from '../store/security.selectors';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {

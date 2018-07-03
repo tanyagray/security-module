@@ -3,7 +3,7 @@ import { Effect, Actions, ofType } from '@ngrx/effects';
 import { Observable, of as observableOf } from 'rxjs';
 import { Action, Store } from '@ngrx/store';
 import { SecurityActions, RefreshAuthToken, AuthCompleteAction, AuthFailedAction } from './security.actions';
-import { AuthService } from 'lib/services/auth.service';
+import { AuthService } from '../services/auth.service';
 import { switchMap, catchError, map, withLatestFrom } from 'rxjs/operators';
 import { getAuthToken } from './security.selectors';
 import { RootState } from './store.index';
